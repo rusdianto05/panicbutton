@@ -93,8 +93,15 @@
             <nav class="sidebar-nav">
                 <ul id="sidebarnav">
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                            href="/index" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
+                            href="/dashboard" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
                                 class="hide-menu">Dashboard</span></a></li>
+                    <li class="text-center p-40 upgrade-btn">
+                        {{-- button logout post --}}
+                        {{-- <form action="{{ route('logout') }}" method="POST"> --}}
+                            @csrf
+                            <a href="/logout" class="btn d-block w-100 btn-danger text-white">Logout</a>
+                        {{-- </form> --}}
+                    </li>
                 </ul>
 
             </nav>
@@ -118,13 +125,14 @@
         <!-- ============================================================== -->
         <div class="container-fluid">
             <!-- ============================================================== -->
-            <div class="text-end upgrade-btn mb-2">
-                <a href="/create" class="btn btn-primary text-white">Tambah Data +</a>
-            </div>
+            
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Data Lokasi Panic Button</h4>
+                </div>
+                <div class="text-end upgrade-btn mb-2 me-2">
+                    <a href="/create" class="btn btn-primary text-white">Tambah Data +</a>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-hover">

@@ -31,7 +31,7 @@ class UsersController extends Controller
 
         User::create($data);
 
-        return redirect()->route('user.index')->with('success', 'Data berhasil disimpan');
+        return redirect()->route('admin.index')->with('success', 'Data berhasil disimpan');
     }
 
     public function edit($id)
@@ -55,7 +55,7 @@ class UsersController extends Controller
         $item = User::find($id);
         $item->update($data);
 
-        return redirect()->route('user.index')->with('success', 'Data berhasil diupdate');
+        return redirect()->route('admin.index')->with('success', 'Data berhasil diupdate');
     }
 
     public function destroy($id)
@@ -63,7 +63,7 @@ class UsersController extends Controller
         $item = User::find($id);
         $item->delete();
 
-        return redirect()->route('user.index')->with('success', 'Data berhasil dihapus');
+        return redirect()->route('admin.index')->with('success', 'Data berhasil dihapus');
     }
 
     public function register()

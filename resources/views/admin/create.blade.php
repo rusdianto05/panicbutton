@@ -144,7 +144,7 @@
             <nav class="sidebar-nav">
                 <ul id="sidebarnav">
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                            href="/admin/dashboard" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
+                            href="/dashboard" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
                                 class="hide-menu">Dashboard</span></a></li>
                 </ul>
 
@@ -166,7 +166,7 @@
                 <div class="col-6">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 d-flex align-items-center">
-                          <li class="breadcrumb-item"><a href="/admin/dashboard" class="link"><i class="mdi mdi-home-outline fs-4"></i></a></li>
+                          <li class="breadcrumb-item"><a href="/dashboard" class="link"><i class="mdi mdi-home-outline fs-4"></i></a></li>
                           <li class="breadcrumb-item active" aria-current="page">Registration</li>
                         </ol>
                       </nav>

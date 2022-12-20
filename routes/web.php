@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,12 +14,21 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/register', [UsersController::class, 'register'])->name('guest.register');
-Route::post('/register/store', [UsersController::class, 'storeguest'])->name('guest.store');
-Route::get('/', [UsersController::class, 'index'])->name('user.index');
-Route::get('/create', [UsersController::class, 'create'])->name('user.create');
-Route::post('/create/store', [UsersController::class, 'store'])->name('user.store');
-Route::get('/edit/{id}', [UsersController::class, 'edit'])->name('user.edit');
-Route::put('/edit/update/{id}', [UsersController::class, 'update'])->name('user.update');
-Route::delete('/delete/{id}', [UsersController::class, 'destroy'])->name('user.destroy');
+// create middleware admin
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/', [UsersController::class, 'index'])->name('admin.index');
+    Route::get('/register', [UsersController::class, 'register'])->name('guest.register');
+    Route::post('/register/store', [UsersController::class, 'storeguest'])->name('guest.store');
+    Route::get('/dashboard', [UsersController::class, 'index'])->name('user.index');
+    Route::get('/create', [UsersController::class, 'create'])->name('user.create');
+    Route::post('/create/store', [UsersController::class, 'store'])->name('user.store');
+    Route::get('/edit/{id}', [UsersController::class, 'edit'])->name('user.edit');
+    Route::put('/edit/update/{id}', [UsersController::class, 'update'])->name('user.update');
+    Route::delete('/delete/{id}', [UsersController::class, 'destroy'])->name('user.destroy');
+});
+Route::get('login', [AuthController::class, 'index'])->name('login');
+Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post');
+Route::get('registration', [AuthController::class, 'registration'])->name('register');
+Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
+Route::get('dashboard', [AuthController::class, 'dashboard']);
+Route::get('logout', [AuthController::class, 'logout'])->name('logout');
