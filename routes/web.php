@@ -17,8 +17,6 @@ use App\Http\Controllers\AuthController;
 // create middleware admin
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/', [UsersController::class, 'index'])->name('admin.index');
-    Route::get('/register', [UsersController::class, 'register'])->name('guest.register');
-    Route::post('/register/store', [UsersController::class, 'storeguest'])->name('guest.store');
     Route::get('/dashboard', [UsersController::class, 'index'])->name('user.index');
     Route::get('/create', [UsersController::class, 'create'])->name('user.create');
     Route::post('/create/store', [UsersController::class, 'store'])->name('user.store');
@@ -26,9 +24,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/edit/update/{id}', [UsersController::class, 'update'])->name('user.update');
     Route::delete('/delete/{id}', [UsersController::class, 'destroy'])->name('user.destroy');
 });
+Route::post('/register/store', [UsersController::class, 'storeguest'])->name('guest.store');
+Route::get('/register', [UsersController::class, 'register'])->name('guest.register');
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post');
-Route::get('registration', [AuthController::class, 'registration'])->name('register');
-Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
-Route::get('dashboard', [AuthController::class, 'dashboard']);
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
