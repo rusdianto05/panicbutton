@@ -158,7 +158,7 @@
                                 <td>{{ $item->address }}</td>
                                 <td class="d-flex gap-2">
                                     <a href="/edit/{{ $item->id }}" class="btn btn-primary">Edit</a>
-                                    <a href="#" class="btn btn-danger text-white delete" data-id="{{ $item->id }}" data-nama="{{ $item->name }}">Delete</a>
+                                    <a href="/delete/{{ $item->id }}" class="btn btn-danger text-white delete" data-id="{{ $item->id }}" data-nama="{{ $item->name }}">Delete</a>
                                 </td>
                             </tr>
                             @empty
